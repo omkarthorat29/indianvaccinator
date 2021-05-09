@@ -20,7 +20,7 @@
 //   background: #141E30;  /* fallback for old browsers */
 // background: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
 // background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  cursor: pointer;
   text-decoration: none;
   font-size: 25px;
   color: #818181;
@@ -53,3 +53,14 @@ img{
   height: 10vh;
   object-fit: contain;
 }
+.outlet{
+  overflow: auto;
+  height: 100vh;
+}
+
+.shadow{
+  -webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+}
+

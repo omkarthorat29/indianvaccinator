@@ -1,0 +1,16 @@
+<div class="container">
+  <form class="my-5" [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)">
+    <div class="form-group row">
+      <div class="col-sm-12">
+        <textarea formControlName="feedback" type="text" class="form-control" id="exampleInputPassword1" placeholder="feedback......">
+        </textarea>
+        <div class="py-1 text-danger" *ngIf="userForm.get('feedback').invalid && (userForm.get('feedback').dirty || userForm.get('feedback').touched)">
+          This field is required and you can only enter 1000 characters
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center">
+      <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary mt-5">Submit</button>
+    </div>
+  </form>
+</div>

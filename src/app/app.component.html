@@ -1,15 +1,15 @@
-<div class="container" *ngIf="auth.authenticationState.value" class="p-3">
+<div class="shadow px-2 py-3 mb-4" *ngIf="auth.authenticationState.value">
   <div id="mySidenav" class="sidenav">
     <a class="closebtn" (click)="closeNav()">&times;</a>
     <a routerLink="/home" routerLinkActive='active'>Home</a>
-    <a (click)="auth.logout()">Log out</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
+    <a routerLink="/feedback" routerLinkActive='active'>Feedback</a>
+    <a routerLink="/contact-us" routerLinkActive='active'>Contact Us</a>
+    <a (click)="logout()">Log out</a>
   </div>
 
   <div id="main" class="container">
     <div class="d-flex justify-content-between">
-      <div (click)="openNav()" class="btn">
+      <div (click)="openNav()" class="btn my-2">
         <i class="fa fa-bars fa-2x btn-ripple" aria-hidden="true"></i>
       </div>
       <h6>
@@ -18,6 +18,15 @@
     </div>
   </div>
 </div>
-<div class="">
+<div class="outlet">
   <router-outlet></router-outlet>
 </div>
+<app-footer></app-footer>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

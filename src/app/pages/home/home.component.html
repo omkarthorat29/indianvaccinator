@@ -1,1 +1,20 @@
-<p>home works!</p>
+<div class="container">
+  <div class="alert alert-success" *ngIf="this.userData && this.userData.wantAlert" role="alert">
+    <h4 class="alert-heading">Well done!</h4>
+    <p>Your sms alert is now activated</p>
+    <hr>
+    <p class="mb-0">Note: You will recieve sms/email whenever vaccination slots are available to book on your entered phone number
+      . You can always disabled alert after you have done with your vaccination</p>
+    <h6>Pinocde: {{ this.userData.pincode }}</h6>
+  </div>
+  <div>
+    <div class="form-check form-switch">
+      <input (change)="onChnage()" [(ngModel)]="wantAlert" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+      <label *ngIf="!wantAlert" class="form-check-label" for="flexSwitchCheckChecked">Sms/Email alerts disabled </label>
+      <label *ngIf="wantAlert" class="form-check-label" for="flexSwitchCheckChecked">Sms/Email alerts are enabled</label>
+    </div>
+  </div>
+  <div class="p-3">
+    <app-profile></app-profile>
+  </div>
+</div>

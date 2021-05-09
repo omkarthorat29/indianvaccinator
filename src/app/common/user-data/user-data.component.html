@@ -1,0 +1,32 @@
+<form class="my-5" [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)">
+  <div class="form-group row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Phone Number +91</label>
+    <div class="col-sm-10">
+      <input formControlName="phoneNumber" type="number" class="form-control" id="exampleInputPassword1" placeholder="Phone number">
+      <div class="py-1 text-danger" *ngIf="userForm.get('phoneNumber').invalid && (userForm.get('phoneNumber').dirty || userForm.get('phoneNumber').touched)">
+        Please provide a correct phone number.
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Pincode</label>
+    <div class="col-sm-10">
+      <input formControlName="pincode" type="number" class="form-control" id="exampleInputPassword1" placeholder="Pincode">
+      <div class="py-1 text-danger" *ngIf="userForm.get('pincode').invalid && (userForm.get('pincode').dirty || userForm.get('pincode').touched)">
+        Please provide a correct pincode.
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Date of Birth</label>
+    <div class="col-sm-10">
+      <input formControlName="bod" type="text" class="form-control" id="exampleInputPassword1" placeholder="DD/MM/YYYY">
+      <div class="py-1 text-danger" *ngIf="userForm.get('bod').invalid && (userForm.get('bod').dirty || userForm.get('bod').touched)">
+        Please provide a correct birth date.
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary mt-5">Submit</button>
+  </div>
+</form>
