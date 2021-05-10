@@ -12,7 +12,7 @@ export class UserService {
     this.getuserData(data.uid)
     .subscribe((res:any) => {
       if(!res){
-        data.pinocde = null;
+        data.pincode = null;
         data.wantAlert = true;
         this.firestore.collection('users').doc(data.uid)
         .set(data, { merge: true });

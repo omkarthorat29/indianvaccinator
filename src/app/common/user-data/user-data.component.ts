@@ -22,7 +22,6 @@ export class UserDataComponent implements OnInit {
       }
     })
     this.userForm = this.fb.group({
-      bod: [,[Validators.required, Validators.pattern("^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$")]],
       pincode: [,[Validators.required,Validators.min(100000),Validators.max(999999)]],
       phoneNumber:[,[Validators.required, Validators.pattern("^[0-9]{10}$")]]
     })

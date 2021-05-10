@@ -20,7 +20,7 @@ export class AppComponent {
         .subscribe((data:any) => {
           if(!data) this.route.navigateByUrl('user-data')
           if(data){
-            if(!data.phoneNumber || !data.pincode || !data.bod){
+            if(!data.phoneNumber || !data.pincode){
               this.route.navigateByUrl('user-data')
             }else{
               this.route.navigateByUrl('home');
@@ -53,5 +53,11 @@ export class AppComponent {
   logout() {
     this.auth.logout()
     this.closeNav()
+  }
+
+  deleteAccount(){
+    if (confirm('Are you sure you want to delete account?')) {
+      this.auth.deleteUser(this.auth.currentUserId)
+    }
   }
 }

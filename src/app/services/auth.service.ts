@@ -3,6 +3,7 @@ import firebase from 'firebase/app';
 import { AngularFireAuth } from  "@angular/fire/auth";
 import { BehaviorSubject } from 'rxjs';
 import { UserService } from './user.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthService {
   user: firebase.User;
   authenticationState = new BehaviorSubject(false);
   authState: any = null;
-  constructor(public auth:AngularFireAuth, public userService: UserService) {
+  constructor(public auth:AngularFireAuth, public userService: UserService, private firestore: AngularFirestore) {
     this.auth.authState.subscribe(user => {
       if (user){
         this.authState = user
@@ -51,6 +52,14 @@ export class AuthService {
   }
 
   logout(){
-    this.auth.signOut()
+    this.auth.signOut().then(() => { this.authenticationState.next(false); location.reload() })
+  }
+
+  deleteUser(uid){
+    return firebase.auth().currentUser.delete().then(() => {
+      this.firestore.collection('users').doc(uid).delete();
+      this.authenticationState.next(false)
+      location.reload()
+    })
   }
 }
